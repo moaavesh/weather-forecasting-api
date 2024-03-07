@@ -8,6 +8,7 @@ import lombok.*;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class WeatherData {
     @JsonProperty("time")
     public String time;
