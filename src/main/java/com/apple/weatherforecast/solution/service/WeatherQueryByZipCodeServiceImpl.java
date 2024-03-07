@@ -5,6 +5,7 @@ import com.apple.weatherforecast.solution.model.WeatherForecastDetail;
 import com.apple.weatherforecast.solution.model.WeatherForecastRequest;
 import com.apple.weatherforecast.solution.model.WeatherResponse;
 import com.apple.weatherforecast.solution.rule.WeatherForecastingRuleService;
+import com.apple.weatherforecast.solution.utils.Source;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -28,6 +29,7 @@ public class WeatherQueryByZipCodeServiceImpl implements WeatherForecastQuerySer
             weatherForecastRequestValidator.validate(request);
             final WeatherResponse weatherResponse = weatherQueryExecutor.execute(request);
             final WeatherForecastDetail forecastDetail = weatherForecastingRuleService.applyRules(weatherResponse);
+            forecastDetail.setSource(Source.LIVE);
             return forecastDetail;
         } catch (Exception ee) {
             throw new WeatherForecastServiceException("Data could not fetch successfully"+ ee.getMessage());

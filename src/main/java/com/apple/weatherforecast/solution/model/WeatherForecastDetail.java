@@ -1,5 +1,6 @@
 package com.apple.weatherforecast.solution.model;
 
+import com.apple.weatherforecast.solution.utils.Source;
 import lombok.*;
 
 @Data
@@ -17,4 +18,5 @@ public class WeatherForecastDetail {
     String description;
     String advisory;
     Location location;
+    Source source;
 }
