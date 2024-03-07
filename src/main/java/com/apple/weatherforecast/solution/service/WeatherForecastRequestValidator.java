@@ -10,7 +10,5 @@ public class WeatherForecastRequestValidator {
     public  void validate(WeatherForecastRequest request){
         String zipCode = request.getZipCode();
         if(zipCode == null || zipCode.isEmpty()) throw new WeatherForecastServiceException("Zipcode is empty");
-        // USA has 5 digits,  IND has 6 digits
-        if(zipCode.length()<4 ) throw new WeatherForecastServiceException("Zipcode entered is incorrect");
     }
 }
